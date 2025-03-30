@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Arb } from "../../dtos";
 import './dialog.css'
 import { TeamsTable } from "./teams_table";
-
+import { calcIdealStakes } from "../../calculate";
 
 export type DialogProps = {
     arb: Arb | null;
@@ -15,7 +15,6 @@ export function Dialog({ arb, onClose }: DialogProps) {
 
     const minProfit = 10
     const maxProfit = 15
-
     const minProfitPerc = 2.5
     const maxProfitPerc = 3.6
   
@@ -27,7 +26,11 @@ export function Dialog({ arb, onClose }: DialogProps) {
             {/* Match details header */}
             <div className="dialog-header">
               <h2 className="sport-title">{arb.sporttitle}</h2>
-              <p className="match-title">{arb.outcomes.map(o => o.Name).join(' vs ')}</p>
+              <p className="match-title">
+                {arb.outcomes
+                    .filter(o => o.Name !== "Draw")
+                    .map(o => o.Name).join(' vs ')}
+              </p>
               <p className="commence-time">{new Date(arb.commencetime).toLocaleString()} (UTC)</p>
             </div>
     
@@ -58,8 +61,7 @@ export function Dialog({ arb, onClose }: DialogProps) {
                 <span className="profit-value" id="max-profit">${maxProfit} (+{maxProfitPerc}%)</span>
               </div>
             </div>
-
           </div>
         </div>
       );
-    }
+}

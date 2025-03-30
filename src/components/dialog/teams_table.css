@@ -1,6 +1,6 @@
 .teams-table {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     row-gap: 1rem;
     column-gap: 1rem;
     margin-bottom: 2rem;

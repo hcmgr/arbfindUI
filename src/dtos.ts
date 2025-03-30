@@ -1,5 +1,6 @@
 export type Outcome = {
-    BookmakerKey:   string;
+    BookmakerTitle:   string;
+    BookmakerUrl:   string;
     Name:           string;
     Price:          number;
 }

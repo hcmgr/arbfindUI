@@ -1,12 +1,12 @@
 import { Outcome } from "./dtos";
 
 export type Bet = {
-    // mutable
+    // input
     outcomes: Outcome[];
     totalStake: number;
-    idealRoundedStakes: number[];
 
-    // immutable
+    // output
+    idealRoundedStakes: number[];
     returns: number[];
     guaranteedProfit: number
 };
@@ -20,16 +20,16 @@ export type Bet = {
  *      stake list 
  */
 export function calcIdealStakes(outcomes: Outcome[], totalStake: number): number[] {
-    const r = outcomes.reduce((acc, o) => acc + 1 / o.price, 0);
+    const r = outcomes.reduce((acc, o) => acc + 1 / o.Price, 0);
 
     // Unrounded stakes
-    const stakes = outcomes.map(o => (totalStake / o.price) * (1 / r));
+    const stakes = outcomes.map(o => (totalStake / o.Price) * (1 / r));
 
     // Rounded stakes (to represent real money bets)
     const roundedStakes = stakes.map(s => Math.round(s * 100) / 100);
 
     // Calculate actual returns for each outcome
-    const returns = roundedStakes.map((stake, i) => stake * outcomes[i].price);
+    const returns = roundedStakes.map((stake, i) => stake * outcomes[i].Price);
 
     // Find worst-case return and compute actual profit
     const worstReturn = Math.min(...returns);
