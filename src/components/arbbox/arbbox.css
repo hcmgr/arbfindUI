@@ -1,0 +1,18 @@
+  .arb-box {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    margin-bottom: 0.5vh;
+  
+    width: 90vw;          /* 90% of viewport width */
+    max-width: 600px;     /* Optional cap on large screens */
+    min-width: 300px;
+  
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .arb-box:hover {
+    transform: scale(1.01);
+  }

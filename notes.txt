@@ -1,0 +1,15 @@
+TODO
+    - change bookmaker key to bookmaker title (OR, do thing below)
+    - hyperlink bookies
+        - for Arb object, could add a Bookmaker object, which has:
+            - bookmakerkey, bookmakertitle, bookmakerurl (all of it is useful)
+    - put min/max profit fields below current ones
+    - add a 'calculate' button next to total stake (i.e. on press, stakes are populated)
+    - general calculation logic for dialog
+    - login flow?
+        - immediately go to login screen?
+        - what do I actually need persistence for?
+    - group by sport
+        - collapsable by sport
+        - i.e. would be helpful to collapse sport with heaps of arbs that are not worth betting on
+          (e.g. because the game is currently on, and odds fluctuating wildly)
